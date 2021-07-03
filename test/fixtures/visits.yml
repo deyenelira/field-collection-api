@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2021-07-03
+  status: MyString
+  checkin_at: 2021-07-03 14:51:19
+  checkout_at: 2021-07-03 14:51:19
+  user_id: one
+
+two:
+  date: 2021-07-03
+  status: MyString
+  checkin_at: 2021-07-03 14:51:19
+  checkout_at: 2021-07-03 14:51:19
+  user_id: two
