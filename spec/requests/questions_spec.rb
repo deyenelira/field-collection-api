@@ -1,4 +1,5 @@
 require 'rails_helper'
+
 RSpec.describe 'Questions', type: :request do
 	before(:all) do
 	    @user = User.create!(name: 'testando' , password: 'tesste' , password_confirmation: 'tesste', email: 'tesst@gmail.com', cpf: '05017437070')
