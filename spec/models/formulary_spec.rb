@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Formulary, :type => :model do  	
+  	
   	subject {
 	    described_class.new(name: "form")
   	}
@@ -15,7 +16,5 @@ RSpec.describe Formulary, :type => :model do
     	form2 = FactoryBot.build(:formulary)
     	expect(form2).to_not be_valid
   	end
-
-
-
+  	
 end

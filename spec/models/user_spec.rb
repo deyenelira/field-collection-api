@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, :type => :model do  	
+  	
   	subject {
 	    described_class.new(name: "Elias",
 	                        password_digest: "elias123",
@@ -38,6 +39,5 @@ RSpec.describe User, :type => :model do
     	user2 = FactoryBot.build(:user)
     	expect(user2).to_not be_valid
   	end
-
 
 end

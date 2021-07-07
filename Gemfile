@@ -19,7 +19,7 @@ gem 'jwt'
 gem 'simple_command'
 gem 'validates_cpf'
 gem 'validates_cpf_cnpj'
-gem 'paranoia', '~> 2.0'
+gem 'paranoia', git: 'git@github.com:rubysherpas/paranoia.git', branch: 'core'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

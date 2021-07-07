@@ -28,4 +28,5 @@ RSpec.describe Answer, :type => :model do
     	subject.question_id = 13
     	expect(subject).to_not be_valid
   	end
+  	
 end

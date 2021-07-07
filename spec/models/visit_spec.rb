@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe Visit, :type => :model do  	
   	
   	user = FactoryBot.create(:user)
+  	
   	subject {
 	    described_class.new(date: Date.new(2021,7,10),
 	    					status: "REALIZANDO",

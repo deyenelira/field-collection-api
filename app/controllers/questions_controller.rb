@@ -1,19 +1,17 @@
 class QuestionsController < ApplicationController
+  
   before_action :set_question, only: [:show, :update, :destroy]
 
-  # GET /questions
   def index
     @questions = Question.all
 
     render json: @questions
   end
 
-  # GET /questions/1
   def show
     render json: @question
   end
 
-  # POST /questions
   def create
     @question = Question.new(question_params)
 
@@ -24,7 +22,6 @@ class QuestionsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /questions/1
   def update
     if @question.update(question_params)
       render json: @question
@@ -33,7 +30,6 @@ class QuestionsController < ApplicationController
     end
   end
 
-  # DELETE /questions/1
   def destroy
     @question.destroy
   end

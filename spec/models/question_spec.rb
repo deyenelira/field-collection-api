@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe Question, :type => :model do  	
   	
   	form = FactoryBot.create(:formulary)
+  	
   	subject {
 	    described_class.new(name: "question",
 	    					formulary_id: "#{form.id}",

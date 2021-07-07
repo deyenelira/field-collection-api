@@ -1,19 +1,17 @@
 class FormulariesController < ApplicationController
+  
   before_action :set_formulary, only: [:show, :update, :destroy]
 
-  # GET /formularies
   def index
     @formularies = Formulary.all
 
     render json: @formularies
   end
 
-  # GET /formularies/1
   def show
     render json: @formulary
   end
 
-  # POST /formularies
   def create
     @formulary = Formulary.new(formulary_params)
 
@@ -24,7 +22,6 @@ class FormulariesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /formularies/1
   def update
     if @formulary.update(formulary_params)
       render json: @formulary
@@ -33,7 +30,6 @@ class FormulariesController < ApplicationController
     end
   end
 
-  # DELETE /formularies/1
   def destroy
     @formulary.destroy
   end

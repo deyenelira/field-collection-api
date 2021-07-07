@@ -1,4 +1,5 @@
 class Visit < ApplicationRecord
+  
   belongs_to :user
   validate :date_cannot_be_in_the_past
   validate :checkin_cannot_be_greater_or_equal_than_today
@@ -32,4 +33,5 @@ class Visit < ApplicationRecord
       errors.add(:status, "Status inválido")
     end
   end
+  
 end
