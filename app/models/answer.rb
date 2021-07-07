@@ -2,8 +2,8 @@ class Answer < ApplicationRecord
   belongs_to :formulary
   belongs_to :question
   belongs_to :visit
-  validates :question_is_valid?
-  validates :formulary_is_valid?
+  validate :question_is_valid?
+  validate :formulary_is_valid?
 
   def question_is_valid?
     if !Question.exists?(question_id)

@@ -45,6 +45,6 @@ class VisitsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def visit_params
-      params.require(:visit).permit(:date, :status, :checkin_at, :checkout_at, :user_id_id)
+      params.permit(:date, :status, :checkin_at, :checkout_at, :user_id)
     end
 end

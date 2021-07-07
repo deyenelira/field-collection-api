@@ -1,10 +1,9 @@
 class Visit < ApplicationRecord
   belongs_to :user
-  validates :date_cannot_be_in_the_past
-  validates :checkin_cannot_be_greater_or_equal_than_today
-  validates :checkout_cannot_be_less_than_checkin
-  validates :user_is_valid?
-  validates :status_is_valid?
+  validate :date_cannot_be_in_the_past
+  validate :checkin_cannot_be_greater_or_equal_than_today
+  validate :user_is_valid?
+  validate :status_is_valid?
 
   def date_cannot_be_in_the_past
     if date < Date.today
@@ -22,12 +21,6 @@ class Visit < ApplicationRecord
     end
   end
 
-  def checkout_cannot_be_less_than_checkin
-    if checkin_at <= checkout_at
-      errors.add(:checkout_at, "A data de check-out não pode ser menor ou igual que a data de check-in")
-    end
-  end
-
   def user_is_valid?
     if !User.exists?(user_id)
       errors.add(:user_id, "Usuário não encontrado")
@@ -35,8 +28,8 @@ class Visit < ApplicationRecord
   end
 
   def status_is_valid?
-    if status != ("PENDENTE" || "REALIZANDO" || "REALIZADA")
+    if status != "REALIZANDO" and status != "REALIZADO" and status != "PENDENTE"
       errors.add(:status, "Status inválido")
-    
+    end
   end
 end

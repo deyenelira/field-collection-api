@@ -46,6 +46,6 @@ class FormulariesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def formulary_params
-      params.require(:formulary).permit(:name)
+      params.permit(:name)
     end
 end
