@@ -7,8 +7,8 @@
 
 ## Execução dos testes:
 - Antes da execução de cada teste, é necessário executar o seguinte comando: 
-    *bundle exec rake db:reset RAILS_ENV=test
+    - bundle exec rake db:reset RAILS_ENV=test
 - Requests:
-    *rspec ./spec/models/(nomedoarquivo)_spec.rb
+    - rspec ./spec/models/(nomedoarquivo)_spec.rb
 - Models:
-    *rspec ./spec/requests/(nomedoarquivo)_spec.rb
+    - rspec ./spec/requests/(nomedoarquivo)_spec.rb
