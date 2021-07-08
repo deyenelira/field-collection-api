@@ -26,7 +26,7 @@ RSpec.describe 'Users', type: :request do
             expect(response).to be_successful
             expect(response).to have_http_status(201)
         end
-      
+        
         it 'when the user is not created' do 
             post '/users', params: {:name => 'Teste', :password_digest => 'Teste', :email => 'teste@gmail.com', :cpf => '31199660027'}
             expect(response).to have_http_status(422)
@@ -60,7 +60,7 @@ RSpec.describe 'Users', type: :request do
             it 'when the user is not authenticated' do
               delete "/users/#{@user.id}"
               expect(response).to have_http_status(401)
-            end
-        end
-    end
+          end
+      end
+  end
 end
