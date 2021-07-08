@@ -1,7 +1,8 @@
 class User < ApplicationRecord
 
   has_secure_password
-  has_many :visits
+  has_many :visits, dependent: :destroy 
+  acts_as_paranoid without_default_scope: true
 
   validates :password_digest, 
   format: { with: /(?=.*[a-zA-Z])(?=.*[0-9])/, message: "Senha inválida, a senha deve possuir números e letras." },

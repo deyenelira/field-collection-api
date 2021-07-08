@@ -63,8 +63,8 @@ RSpec.describe 'Formularies', type: :request do
 			expect(response).to have_http_status(204)
 		end
 
-		context 'when the user is not deleted' do 
-			
+		context 'when the answer is not deleted' do 
+
 			it 'when the user is not authenticated' do
 				delete "/answers/#{@answer.id}"
 				expect(response).to have_http_status(401)
