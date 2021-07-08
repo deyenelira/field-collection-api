@@ -2,17 +2,9 @@ require 'rails_helper'
 
 RSpec.describe 'Questions', type: :request do
 	before(:all) do
-	    @user = User.create!(name: 'Daniela',
-			    			 password: 'daniela123',
-			    			 password_confirmation: 'daniela123',
-			    			 email: 'dani@gmail.com',
-			    			 cpf: '84262459004')
-
+	    @user = User.create!(name: 'Daniela', password: 'daniela123', password_confirmation: 'daniela123', email: 'dani@gmail.com', cpf: '84262459004')
 	    @formulary = Formulary.create!(name: 'formulary')
-
-	    @question = Question.create!(name: 'question',
-  									 formulary_id: "#{@formulary.id}",
-  									 question_type: 'type')
+	    @question = Question.create!(name: 'question', formulary_id: "#{@formulary.id}", question_type: 'type')
   	end
 
   	describe '#index' do

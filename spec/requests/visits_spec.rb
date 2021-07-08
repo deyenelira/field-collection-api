@@ -3,17 +3,8 @@ require 'rails_helper'
 RSpec.describe 'Visits', type: :request do
 
 	before(:all) do 
-	    @user = User.create!(name: 'Elias',
-                     password: 'elias123',
-                     password_confirmation: 'elias123',
-                     email: 'elias@gmail.com',
-                     cpf: '09754715033')
-
-  		@visit = Visit.create!(:date => Date.new(2021,7,10),
-	    					   :status => "REALIZANDO",
-	    					   :checkin_at => DateTime.new(2021,7,6,8,0,0),
-	    					   :checkout_at => DateTime.new(2021,7,8,14,0,0),
-	    					   :user_id => "#{@user.id}")
+	    @user = User.create!(name: 'Elias', password: 'elias123', password_confirmation: 'elias123', email: 'elias@gmail.com', cpf: '09754715033')
+  		@visit = Visit.create!(:date => Date.new(2021,7,10), :status => "REALIZANDO", :checkin_at => DateTime.new(2021,7,6,8,0,0), :checkout_at => DateTime.new(2021,7,8,14,0,0), :user_id => "#{@user.id}")
   	end
 
 	describe '#index' do

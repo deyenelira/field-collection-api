@@ -8,11 +8,7 @@ RSpec.describe Answer, :type => :model do
 	visit = FactoryBot.create(:visit)
 
   	subject {
-	    described_class.new(content: "content",
-	    					formulary_id: "#{form.id}",
-	    					question_id: "#{question.id}",
-	    					visit_id: "#{visit.id}",
-	    					answered_at: DateTime.new(2021,7,8,14,0,0))
+	    described_class.new(content: "content", formulary_id: "#{form.id}", question_id: "#{question.id}", visit_id: "#{visit.id}", answered_at: DateTime.new(2021,7,8,14,0,0))
   	}
 
   	it 'is valid with valid attributes' do

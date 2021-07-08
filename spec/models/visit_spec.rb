@@ -5,11 +5,7 @@ RSpec.describe Visit, :type => :model do
   	user = FactoryBot.create(:user)
   	
   	subject {
-	    described_class.new(date: Date.new(2021,7,10),
-	    					status: "REALIZANDO",
-	                        checkin_at: DateTime.new(2021,7,6,8,0,0),
-	                        checkout_at: DateTime.new(2021,7,8,14,0,0),
-	                        user_id: "1")
+	    described_class.new(date: Date.new(2021,7,10), status: "REALIZANDO", checkin_at: DateTime.new(2021,7,6,8,0,0), checkout_at: DateTime.new(2021,7,8,14,0,0), user_id: "1")
   	}
   	it 'is valid with valid attributes' do
     	expect(subject).to be_valid

@@ -3,29 +3,11 @@ require 'rails_helper'
 RSpec.describe 'Formularies', type: :request do
 
 	before(:all) do
-		@user = User.create!(name: 'Zequinha',
-			    			 password: 'zeca123',
-			    			 password_confirmation: 'zeca123',
-			    			 email: 'zeca@gmail.com',
-			    			 cpf: '99978355065') 
-
-	    @visit = Visit.create!(:date => Date.new(2021,7,10),
-	    					   :status => "REALIZANDO",
-	    					   :checkin_at => DateTime.new(2021,7,6,8,0,0),
-	    					   :checkout_at => DateTime.new(2021,7,8,14,0,0),
-	    					   :user_id => "#{@user.id}")
-
+		@user = User.create!(name: 'Zequinha', password: 'zeca123', password_confirmation: 'zeca123', email: 'zeca@gmail.com', cpf: '99978355065') 
+	    @visit = Visit.create!(:date => Date.new(2021,7,10), :status => "REALIZANDO", :checkin_at => DateTime.new(2021,7,6,8,0,0), :checkout_at => DateTime.new(2021,7,8,14,0,0), :user_id => "#{@user.id}")
 	    @formulary = Formulary.create!(name: 'formulario')
-
-  		@question = Question.create!(name: 'question',
-  									 formulary_id: "#{@formulary.id}",
-  									 question_type: 'type')
-
-  		@answer = Answer.create!(content: 'content',
-  								 formulary_id: "#{@formulary.id}",
-  								 question_id: "#{@question.id}",
-  								 visit_id: "#{@visit.id}",
-  								 answered_at:DateTime.new(2021,7,8,14,0,0))
+  		@question = Question.create!(name: 'question', formulary_id: "#{@formulary.id}", question_type: 'type')
+  		@answer = Answer.create!(content: 'content', formulary_id: "#{@formulary.id}", question_id: "#{@question.id}", visit_id: "#{@visit.id}", answered_at:DateTime.new(2021,7,8,14,0,0))
   	end
 
   	describe '#index' do

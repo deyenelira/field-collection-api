@@ -3,11 +3,7 @@ require 'rails_helper'
 RSpec.describe 'Users', type: :request do
 
     before(:all) do 
-        @user = User.create!(name: 'Kinho',
-                     password: 'Kinho123',
-                     password_confirmation: 'Kinho123',
-                     email: 'kinho@gmail.com',
-                     cpf: '05017437070')
+        @user = User.create!(name: 'Kinho', password: 'Kinho123', password_confirmation: 'Kinho123', email: 'kinho@gmail.com', cpf: '05017437070')
     end
 
     describe '#index' do

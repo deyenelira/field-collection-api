@@ -7,11 +7,7 @@ RSpec.describe 'Authentication', type: :request do
 	end
 
 	it 'when user is authenticated' do 
-    	@user = User.create!(name: 'Kinho',
-                     password: 'Kinho123',
-                     password_confirmation: 'Kinho123',
-                     email: 'kinho@gmail.com',
-                     cpf: '05017437070')
+    	@user = User.create!(name: 'Kinho', password: 'Kinho123', password_confirmation: 'Kinho123', email: 'kinho@gmail.com', cpf: '05017437070')
 		post '/authenticate', params: {:email => 'kinho@gmail.com', :password => 'Kinho123'}
 		expect(response).to have_http_status(200)
 	end
