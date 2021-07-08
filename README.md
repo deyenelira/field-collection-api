@@ -3,7 +3,7 @@
 
 * Ruby version: 2.4.10
 * Rails version: 5.2.6
-* Postegresql
+* Postgresql
 
 ## Execução dos testes:
 - Antes da execução de cada teste, é necessário executar o seguinte comando: 
