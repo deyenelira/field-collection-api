@@ -1,24 +1,14 @@
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## A API simula o fluxo de um sistema de coleta em campo.
 
-Things you may want to cover:
+* Ruby version: 2.4.10
+* Rails version: 5.2.6
+* Postgresql
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Execução dos testes:
+- Antes da execução de cada teste, é necessário executar o seguinte comando: 
+    - bundle exec rake db:reset RAILS_ENV=test
+- Requests:
+    - rspec ./spec/models/(nomedoarquivo)_spec.rb
+- Models:
+    - rspec ./spec/requests/(nomedoarquivo)_spec.rb
