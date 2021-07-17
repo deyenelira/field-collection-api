@@ -4,7 +4,7 @@ RSpec.describe 'Visits', type: :request do
 
 	before(:all) do 
 		@user = User.create!(name: 'Elias', password: 'elias123', password_confirmation: 'elias123', email: 'elias@gmail.com', cpf: '09754715033')
-		@visit = Visit.create!(:date => Date.new(2021,7,10), :status => "REALIZANDO", :checkin_at => DateTime.new(2021,7,6,8,0,0), :checkout_at => DateTime.new(2021,7,8,14,0,0), :user_id => "#{@user.id}")
+		@visit = Visit.create!(:date => Date.new(2021,7,18), :status => "REALIZANDO", :checkin_at => DateTime.new(2021,7,6,8,0,0), :checkout_at => DateTime.new(2021,7,8,14,0,0), :user_id => "#{@user.id}")
 	end
 
 	describe '#index' do
@@ -26,13 +26,19 @@ RSpec.describe 'Visits', type: :request do
 
 		it 'when the visit is created' do
 			authentication = AuthenticateUser.call(@user.email, @user.password)
-			post '/visits', params: {:date => Date.new(2021,7,10), :status => 'REALIZADO', :checkin_at => DateTime.new(2021,7,6,8,0,0), :checkout_at => DateTime.new(2021,7,8,14,0,0), :user_id => "#{@user.id}" },  headers: {"Authorization" => "Bearer #{authentication.result}"}
+			post '/visits', params: {:date => Date.new(2021,7,18), :status => 'REALIZADO', :checkin_at => DateTime.new(2021,7,6,8,0,0), :checkout_at => DateTime.new(2021,7,8,14,0,0), :user_id => "#{@user.id}" },  headers: {"Authorization" => "Bearer #{authentication.result}"}
 			expect(response).to have_http_status(201)
 		end
 
 		it 'when the visit is not created' do
 			authentication = AuthenticateUser.call(@user.email, @user.password)
 			post '/visits', params: {:date => Date.new(2010,7,10), :status => 'REALIZADO', :checkin_at => DateTime.new(2021,7,6,8,0,0), :checkout_at => DateTime.new(2021,7,8,14,0,0), :user_id => "#{@user.id}" },  headers: {"Authorization" => "Bearer #{authentication.result}"}
+			expect(response).to have_http_status(422)
+		end
+
+		it 'when the visit is not created: invalid param' do
+			authentication = AuthenticateUser.call(@user.email, @user.password)
+			post '/visits', params: {:date => "teste", :status => 'REALIZADO', :checkin_at => DateTime.new(2021,7,6,8,0,0), :checkout_at => DateTime.new(2021,7,8,14,0,0), :user_id => "#{@user.id}" },  headers: {"Authorization" => "Bearer #{authentication.result}"}
 			expect(response).to have_http_status(422)
 		end
 	end
@@ -43,6 +49,13 @@ RSpec.describe 'Visits', type: :request do
 			put "/visits/#{@user.id}", params: {:status => 'REALIZADO' },  headers: {"Authorization" => "Bearer #{authentication.result}"}
 			@visit.reload
 			expect(response).to have_http_status(200)
+		end
+
+		it 'when the visit is not updated: invalid param' do 
+			authentication = AuthenticateUser.call(@user.email, @user.password)
+			put "/visits/#{@user.id}", params: {:status => 12 },  headers: {"Authorization" => "Bearer #{authentication.result}"}
+			@visit.reload
+			expect(response).to have_http_status(422)
 		end
 
 		it 'when the user is not authenticated' do

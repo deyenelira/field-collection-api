@@ -18,7 +18,7 @@ FactoryBot.define do
 	end
 
 	factory :visit do 
-		date {Date.new(2021,7,10)}
+		date {Date.new(2021,7,18)}
 		status {'REALIZANDO'}
 		checkin_at {DateTime.new(2021,7,6,8,0,0)}
 		checkout_at {DateTime.new(2021,7,8,14,0,0)}

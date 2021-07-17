@@ -10,6 +10,11 @@ RSpec.describe Formulary, :type => :model do
 		expect(subject).to be_valid
 	end
 
+	it 'is invalid with nil attributes' do
+		subject.name = nil
+		expect(subject).to_not be_valid
+	end
+
 	it 'is invalid without a unique name' do 
 		form1 = FactoryBot.create(:formulary)
 		form1.save

@@ -44,4 +44,4 @@ class AnswersController < ApplicationController
     def answer_params
       params.permit(:content, :formulary_id, :question_id, :visit_id, :answered_at)
     end
-end
+  end

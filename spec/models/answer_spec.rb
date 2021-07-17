@@ -15,13 +15,19 @@ RSpec.describe Answer, :type => :model do
 		expect(subject).to be_valid
 	end
 
-	it 'is invalid without a valid formulary_id' do 
-		subject.formulary_id = 12
+	it 'is invalid with nil attributes' do 
+		subject.formulary_id = nil
 		expect(subject).to_not be_valid
 	end
 
 	it 'is invalid without a valid question_id' do 
 		subject.question_id = 13
+		expect(subject).to_not be_valid
+	end
+
+	it 'is invalid without a valid formulary_id' do
+		subject.question_id = question.id 
+		subject.formulary_id = 13
 		expect(subject).to_not be_valid
 	end
 	
