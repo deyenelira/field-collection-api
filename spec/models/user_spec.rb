@@ -11,17 +11,19 @@ RSpec.describe User, :type => :model do
 	end
 
 	it 'is invalid with invalid password' do 
+		#subject.email = "elias@gmail.com"
 		subject.password_digest = 'eliaslol'
 		expect(subject).to_not be_valid
 	end
 
-	it 'is invalid with invalid password' do 
-		subject.password_digest = 'elias'
+	it 'is invalid with nil password' do 
+		subject.password_digest = nil
 		expect(subject).to_not be_valid
 	end
 
-	it 'is invalid with invalid password' do 
-		subject.password_digest = '123456'
+	it 'is invalid with nil email' do 
+		subject.password_digest = "elias123"
+		subject.email = nil
 		expect(subject).to_not be_valid
 	end
 
@@ -30,9 +32,8 @@ RSpec.describe User, :type => :model do
 		expect(subject).to_not be_valid
 	end
 
-	it 'is invalid with nil attributes' do 
-		subject.cpf = "61779398050"
-		subject.email = nil
+	it 'is invalid with nil cpf' do 
+		subject.cpf = nil
 		expect(subject).to_not be_valid
 	end
 
