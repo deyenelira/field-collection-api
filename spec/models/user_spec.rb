@@ -11,7 +11,6 @@ RSpec.describe User, :type => :model do
 	end
 
 	it 'is invalid with invalid password' do 
-		#subject.email = "elias@gmail.com"
 		subject.password_digest = 'eliaslol'
 		expect(subject).to_not be_valid
 	end

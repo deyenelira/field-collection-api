@@ -8,13 +8,13 @@ class Visit < ApplicationRecord
   validates :checkout_at, presence: true
   validates :status, presence: true
   validates :user_id, presence: true
-  validate :date_cannot_be_in_the_past
-  validate :checkin_cannot_be_greater_or_equal_than_today
+  validate :date_is_valid?
+  validate :checkin_checkout_valid?
   validate :user_is_valid?
   validate :status_is_valid?
   
 
-  def date_cannot_be_in_the_past
+  def date_is_valid?
     if date == nil
       errors.add(:date, "Insira uma data")
     elsif date < Date.today
@@ -22,7 +22,7 @@ class Visit < ApplicationRecord
     end
   end
 
-  def checkin_cannot_be_greater_or_equal_than_today
+  def checkin_checkout_valid?
     if checkin_at == nil
       errors.add(:checkin_at, "Insira a data de check-in.")
     elsif checkout_at == nil
